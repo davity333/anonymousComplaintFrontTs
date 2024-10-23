@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MainComponent } from './component/main/main.component';
-import { Student, StudentService } from './services/student.service';
+import { Component,EventEmitter, Input, OnInit, Output  } from '@angular/core';
+import { RouterOutlet } from '@angular/router'
+import { MainComponent } from '../main/main.component';
+import { Student, StudentService } from '../../services/student.service';
 import { NgFor } from '@angular/common';
 import { NgIf } from '@angular/common';
-import { FormularioComponent } from "./component/formulario/formulario.component";
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-formulario',
   standalone: true,
-  imports: [RouterOutlet, FormularioComponent, NgFor, NgIf],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, MainComponent ,NgFor,NgIf],
+  templateUrl: './formulario.component.html',
+  styleUrl: './formulario.component.css'
 })
-export class AppComponent {
-
+export class FormularioComponent {
   modal: boolean = false;
   public dataa : Student[] = [];
   
@@ -25,7 +25,8 @@ export class AppComponent {
     
   }
   
-  @Input() indexPass : number=0;
+  @Output()
+  indexPass = new EventEmitter<number>()
 
 
   ngOnInit(): void {
@@ -43,10 +44,19 @@ export class AppComponent {
       
 
       if(nombre.length == 0 || apellido.length == 0 || edad.length == 0){
-        alert("NO DEJAR CAMPOS VACIOS")
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "No podeir dejar campos vacios",
+          footer: 'MIRA ESE WEY'
+        });
       }else{
         this.student.addStudent(data);
-      alert("Estudiante agregado 7u7")
+        Swal.fire({
+          title: "Estudiante agregado",
+          text: "Nombre: "+nombre + " Apellido:"+apellido + " Edad:"+edad,
+          icon: "success"
+        });
       console.log(data)
       }
       console.log(this.modal)
@@ -56,7 +66,7 @@ export class AppComponent {
       this.dataa = this.student.getStudents();
       let dato = JSON.stringify(this.dataa)
       alert(dato);
-     console.log(dato); 
+      console.log(dato); 
     }
 
     searchStudent(nombre : string){
@@ -67,7 +77,7 @@ export class AppComponent {
       }
         
       else
-        alert("No hay nada")
+      Swal.fire("No se encontro el estudiante");
     }
 
     update(){
@@ -82,8 +92,10 @@ export class AppComponent {
 
     openModal(index : number){
       this.modal = true;
-      this.indexPass=index;
-      console.log(index)
+      this.indexPass.emit(index);
+      console.log("SDJKAF "+index)
+      this.student.setIndex(index);
     }
-}
 
+
+}

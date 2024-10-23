@@ -1,0 +1,21 @@
+<div id="fondo">
+<div id="modal">
+    <div id="body">
+
+        
+        <p id="texto">Actualizar datos del estudiante</p>
+    
+        <div id="inputs">
+        <input type="text" #nombre id="inputUpdate" placeholder="Nombre del estudiante">
+        <input type="text" #apellido id="inputUpdate" placeholder="Apellido">
+        <input type="text" #edad id="inputUpdate" placeholder="Edad">
+        </div>
+
+        <div id="botones">
+        <button (click)="updateModal(nombre.value, apellido.value, edad.value)">Actualizar</button>
+        <button (click)="closeModal()">Cerrar</button>
+    </div>
+    </div>
+
+</div>
+</div>

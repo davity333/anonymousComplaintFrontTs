@@ -1,0 +1,60 @@
+#modal{
+    height: 48vh;
+    width: 70vh;
+    display: flex;
+    justify-content: center;   
+    align-items: center;     
+    position: fixed;
+    inset: 0;                
+    margin: auto;      
+    background-color: rgba(0, 0, 0, 0.529);
+    transition-duration: 100ms;
+}
+
+p{
+    color: white;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#botones{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+button{
+    background-color: rgba(83, 146, 173, 0.668);
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 3px 32px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input{
+    padding: 4px;
+    height: 30px;
+    font-size: 20px;
+}
+
+#fondo{
+    background-color: rgba(0, 0, 0, 0.532);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;   
+    align-items: center;     
+    position: fixed;
+    inset: 0;                
+    margin: auto; 
+}

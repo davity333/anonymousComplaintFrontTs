@@ -1,0 +1,53 @@
+<header id="header"> 
+    <img id="logo" src="./assets/UP.png" alt="" >  
+    <img id="user" src="./assets/user.png" alt="" width="60px" height="60px">
+  </header>
+  <div id="lineBlack"></div>
+  
+  <p id="agregar">AGREGAR ALUMNOS</p>
+  
+  <div id="labels">
+    <p>Nombre</p>
+    <input type="text" #nombreInput id="input" placeholder="Primer nombre">
+  
+    <p>Apellido</p>
+    <input type="text" #apellidoInput id="input" placeholder="Segundo nombre">
+  
+    <p>Edad</p>
+    <input type="number" #edadInput id="input" placeholder="Edad">
+  </div>
+  
+  <div id="botones">
+  
+  <button (click)="addStudent(nombreInput.value, apellidoInput.value, edadInput.value)" id="btnAgregar">Agregar Alumno</button>
+  <button (click)="searchStudent(nombreInput.value)" id="btnAgregar"> Buscar alumno</button>
+  
+  </div>
+  
+  <div id="box">
+  
+    <p id="nombre">Nombre</p>
+    <p id="apellido">Apellido</p>
+    <p id="edad">Edad</p>
+    <p id="funcion">Funcion</p>
+    
+    </div>
+    
+    <div id="box-dates" *ngFor="let mey of dataa let i=index">
+        <div id="estudiantes" >
+        <p id="dato-student">{{mey.nombre}}</p>
+        <p id="dato-student">{{mey.apellido}}</p>
+        <p id="dato-student">{{mey.edad}}</p>
+        <div>
+          <p (click)="deleted(i, mey.nombre)" id="Eliminar">Eliminar</p>
+          <p (click)="openModal(i)" id="Actualizar">Actualizar</p>
+        </div>
+        
+        </div>
+    </div>
+  
+  
+    <div *ngIf="modal ==
+     true">
+    <app-main ></app-main>
+  </div>
